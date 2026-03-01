@@ -21,6 +21,7 @@ A Vue 3 component library built on top of [reka-ui](https://reka-ui.com/) headle
   - [Avatar](#avatar)
   - [Card](#card)
   - [Checkbox](#checkbox)
+  - [Radio / RadioGroup](#radio--radiogroup)
   - [Label](#label)
   - [Input](#input)
   - [InputPassword](#inputpassword)
@@ -51,6 +52,7 @@ A Vue 3 component library built on top of [reka-ui](https://reka-ui.com/) headle
   - [Breadcrumb](#breadcrumb)
   - [NavigationMenu](#navigationmenu)
   - [Sidebar](#sidebar)
+  - [Tabs](#tabs)
 - [Composables](#composables)
   - [useToast](#usetoast)
   - [useAppearance](#useappearance)
@@ -493,6 +495,98 @@ const checked = ref(false)
     <Checkbox id="terms" v-model:checked="checked" />
     <Label for="terms">I agree to the terms</Label>
   </div>
+</template>
+```
+
+---
+
+### Radio / RadioGroup
+
+Accessible radio button group built on reka-ui's `RadioGroupRoot` / `RadioGroupItem` primitives. `RadioGroup` is the container that manages the selection state; `Radio` is the individual item with an optional inline label.
+
+#### RadioGroup
+
+**Props**
+
+Accepts all props from reka-ui's `RadioGroupRootProps` plus:
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `orientation` | `'horizontal' \| 'vertical'` | `'vertical'` | Layout direction of the items |
+| `modelValue` | `string` | — | Controlled selected value (`v-model`) |
+| `defaultValue` | `string` | — | Initial selected value (uncontrolled) |
+| `disabled` | `boolean` | `false` | Disables the entire group |
+| `name` | `string` | — | Native `name` attribute forwarded to the hidden inputs |
+| `class` | `string` | — | Additional CSS classes on the wrapper |
+
+**Emits**
+
+| Event | Payload | Description |
+|---|---|---|
+| `update:modelValue` | `string` | Fired when the selected value changes |
+
+#### Radio
+
+**Props**
+
+Accepts all props from reka-ui's `RadioGroupItemProps` plus:
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `string` | **required** | The value this item represents |
+| `variant` | `Severity` | `'primary'` | Color of the checked indicator |
+| `size` | `'small' \| 'default' \| 'large'` | `'default'` | Size of the circle and label text |
+| `label` | `string` | — | Text rendered to the right of the button |
+| `disabled` | `boolean` | `false` | Disables this individual item |
+| `class` | `string` | — | Applied to the wrapper `<label>` |
+
+```vue
+<script setup>
+import { RadioGroup, Radio } from '@buillaume.biondo/fab-ui'
+import { ref } from 'vue'
+
+const plan = ref('pro')
+</script>
+
+<template>
+  <!-- Vertical (default) -->
+  <RadioGroup v-model="plan">
+    <Radio value="free"  label="Free" />
+    <Radio value="pro"   label="Pro" />
+    <Radio value="teams" label="Teams" />
+  </RadioGroup>
+
+  <!-- Horizontal -->
+  <RadioGroup v-model="plan" orientation="horizontal">
+    <Radio value="light" label="Light" />
+    <Radio value="dark"  label="Dark" />
+  </RadioGroup>
+
+  <!-- Semantic colors -->
+  <RadioGroup v-model="plan">
+    <Radio value="ok"   variant="success" label="Approved" />
+    <Radio value="warn" variant="warning" label="Pending" />
+    <Radio value="err"  variant="danger"  label="Rejected" />
+  </RadioGroup>
+
+  <!-- Sizes -->
+  <RadioGroup v-model="plan">
+    <Radio value="s" size="small"   label="Small" />
+    <Radio value="m" size="default" label="Default" />
+    <Radio value="l" size="large"   label="Large" />
+  </RadioGroup>
+
+  <!-- Disabled states -->
+  <RadioGroup v-model="plan">
+    <Radio value="a" label="Available" />
+    <Radio value="b" label="Unavailable" disabled />
+  </RadioGroup>
+
+  <!-- Disabled group -->
+  <RadioGroup v-model="plan" disabled>
+    <Radio value="x" label="Option X" />
+    <Radio value="y" label="Option Y" />
+  </RadioGroup>
 </template>
 ```
 
@@ -1791,6 +1885,133 @@ import { HomeIcon, SettingsIcon } from 'lucide-vue-next'
       </main>
     </SidebarInset>
   </SidebarProvider>
+</template>
+```
+
+---
+
+### Tabs
+
+Accessible tabbed interface built on reka-ui's `TabsRoot` / `TabsList` / `TabsTrigger` / `TabsContent` primitives. The `placement` prop controls whether tabs appear on top, left, or right of the content panel; an animated indicator bar slides to the active tab automatically.
+
+The component tree is: `Tabs` → `TabsList` → `TabsTrigger` (×n) + `TabsContent` (×n).
+
+#### Tabs
+
+Root container. Manages selection state, sets the CSS color variable `--tabs-color`, and provides `placement`, `variant`, and `size` to child components via `provide/inject`.
+
+**Props**
+
+Accepts all props from reka-ui's `TabsRootProps` (except `orientation`, derived automatically) plus:
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `modelValue` | `string` | — | Controlled active tab value (`v-model`) |
+| `defaultValue` | `string` | — | Initial active tab (uncontrolled) |
+| `placement` | `'top' \| 'left' \| 'right'` | `'top'` | Position of the tab list relative to the panels |
+| `variant` | `Severity` | `'primary'` | Color of the active indicator and trigger text |
+| `size` | `'small' \| 'default' \| 'large'` | `'default'` | Size of the trigger buttons |
+| `activationMode` | `'automatic' \| 'manual'` | `'automatic'` | Whether tabs activate on focus or on click |
+| `class` | `string` | — | Additional CSS classes on the root element |
+
+**Emits**
+
+| Event | Payload | Description |
+|---|---|---|
+| `update:modelValue` | `string` | Fired when the active tab changes |
+
+#### TabsList
+
+Wrapper for the row or column of `TabsTrigger` buttons. Includes a built-in `TabsIndicator` that slides to the active trigger with a CSS transition.
+
+**Props**
+
+Accepts all props from reka-ui's `TabsListProps` plus:
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `loop` | `boolean` | `false` | Keyboard navigation wraps from last to first trigger |
+| `class` | `string` | — | Additional CSS classes |
+
+#### TabsTrigger
+
+Individual tab button. Reads `size` and `placement` from the parent `Tabs` context.
+
+**Props**
+
+Accepts all props from reka-ui's `TabsTriggerProps` plus:
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `string` | **required** | Unique identifier matching a `TabsContent` value |
+| `disabled` | `boolean` | `false` | Prevents selection and dims the trigger |
+| `class` | `string` | — | Additional CSS classes |
+
+#### TabsContent
+
+Panel revealed when the associated trigger is active. Takes `flex-1` to fill the available space alongside a vertical tab list.
+
+**Props**
+
+Accepts all props from reka-ui's `TabsContentProps` plus:
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `string` | **required** | Must match the corresponding `TabsTrigger` value |
+| `forceMount` | `boolean` | `false` | Keeps the panel mounted even when inactive (useful for animation libraries) |
+| `class` | `string` | — | Additional CSS classes |
+
+```vue
+<script setup>
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@buillaume.biondo/fab-ui'
+import { ref } from 'vue'
+
+const active = ref('account')
+</script>
+
+<template>
+  <!-- Top (default) -->
+  <Tabs v-model="active" placement="top">
+    <TabsList>
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="security">Security</TabsTrigger>
+      <TabsTrigger value="billing">Billing</TabsTrigger>
+      <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account"  class="p-4">Account settings…</TabsContent>
+    <TabsContent value="security" class="p-4">Security settings…</TabsContent>
+    <TabsContent value="billing"  class="p-4">Billing settings…</TabsContent>
+  </Tabs>
+
+  <!-- Left placement -->
+  <Tabs v-model="active" placement="left" variant="success">
+    <TabsList>
+      <TabsTrigger value="profile">Profile</TabsTrigger>
+      <TabsTrigger value="team">Team</TabsTrigger>
+    </TabsList>
+    <TabsContent value="profile" class="p-6">Profile panel…</TabsContent>
+    <TabsContent value="team"    class="p-6">Team panel…</TabsContent>
+  </Tabs>
+
+  <!-- Right placement, large size, danger color -->
+  <Tabs v-model="active" placement="right" variant="danger" size="large">
+    <TabsList>
+      <TabsTrigger value="logs">Logs</TabsTrigger>
+      <TabsTrigger value="alerts">Alerts</TabsTrigger>
+    </TabsList>
+    <TabsContent value="logs"   class="p-6">Logs panel…</TabsContent>
+    <TabsContent value="alerts" class="p-6">Alerts panel…</TabsContent>
+  </Tabs>
+
+  <!-- Uncontrolled with defaultValue -->
+  <Tabs default-value="tab1">
+    <TabsList>
+      <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+      <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+    </TabsList>
+    <TabsContent value="tab1" class="p-4">Content 1</TabsContent>
+    <TabsContent value="tab2" class="p-4">Content 2</TabsContent>
+  </Tabs>
 </template>
 ```
 
