@@ -1,7 +1,9 @@
-# Laser Bleu UI — Composants
+# FAB-UI
 
 > Bibliothèque de composants Vue 3 construite sur **Reka UI**, **Tailwind CSS v4** et **class-variance-authority**. Chaque composant respecte un système de design cohérent basé sur des CSS custom properties (`--color-*`, `--radius-*`, `--shadow-*`).
 
+---
+npm require @buillaume.biondo/fab-ui@0.1.0
 ---
 
 ## Sommaire
@@ -118,7 +120,7 @@ Champ de texte de base. Supporte `v-model`, validation (`error`), désactivation
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Input } from '@/components/ui/input'
+import { Input } from 'fab-ui'
 
 const email = ref('')
 </script>
@@ -168,7 +170,7 @@ Champ mot de passe avec bouton bascule pour afficher/masquer la valeur. Mêmes s
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { InputPassword } from '@/components/ui/input'
+import { InputPassword } from 'fab-ui'
 
 const password = ref('')
 </script>
@@ -211,7 +213,7 @@ Champ numérique avec boutons `−` et `+` intégrés. Gère `min`, `max` et `st
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { InputNumber } from '@/components/ui/input'
+import { InputNumber } from 'fab-ui'
 
 const quantity = ref(1)
 </script>
@@ -258,7 +260,7 @@ Zone de texte multiligne (`textarea`) avec compteur de caractères optionnel.
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { InputArea } from '@/components/ui/input'
+import { InputArea } from 'fab-ui'
 
 const bio = ref('')
 </script>
@@ -309,7 +311,7 @@ Hérite de `CheckboxRootProps` (Reka UI) :
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox } from 'fab-ui'
 
 const accepted = ref(false)
 </script>
@@ -359,7 +361,7 @@ Bouton polyvalent avec 8 variantes de couleur, 4 formes, 5 tailles et des option
 
 ```vue
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import { Button } from 'fab-ui'
 import { SaveIcon, TrashIcon } from 'lucide-vue-next'
 </script>
 
@@ -426,8 +428,8 @@ Bouton divisé : partie gauche déclenchable et partie droite ouvrant un menu d�
 
 ```vue
 <script setup lang="ts">
-import { SplitButton } from '@/components/ui/split-button'
-import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
+import { SplitButton } from 'fab-ui'
+import { DropdownMenuItem } from 'fab-ui'
 import { SaveIcon } from 'lucide-vue-next'
 
 function save() { /* ... */ }
@@ -483,7 +485,7 @@ Bouton à bascule (actif/inactif) basé sur `Toggle` de Reka UI. Peut afficher u
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Toggle } from '@/components/ui/toggle'
+import { Toggle } from 'fab-ui'
 import { BoldIcon } from 'lucide-vue-next'
 
 const bold = ref(false)
@@ -539,7 +541,7 @@ Interrupteur de type switch (on/off) avec label intégré. Tailles limitées à 
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ToggleSwitch } from '@/components/ui/toggle-switch'
+import { ToggleSwitch } from 'fab-ui'
 
 const notifications = ref(true)
 </script>
@@ -585,7 +587,7 @@ Pastille d'étiquette inline avec 8 couleurs, 3 formes et 5 tailles. Supporte un
 
 ```vue
 <script setup lang="ts">
-import { Badge } from '@/components/ui/badge'
+import { Badge } from 'fab-ui'
 </script>
 
 <template>
@@ -628,7 +630,7 @@ Enveloppe positionnant un badge numérique (ou un point) en overlay par rapport 
 
 ```vue
 <script setup lang="ts">
-import { OverlayBadge } from '@/components/ui/badge'
+import { OverlayBadge } from 'fab-ui'
 import { BellIcon } from 'lucide-vue-next'
 </script>
 
@@ -673,7 +675,7 @@ Conteneur circulaire pour une image ou des initiales, basé sur `AvatarRoot` de 
 
 ```vue
 <script setup lang="ts">
-import { Avatar } from '@/components/ui/avatar'
+import { Avatar } from 'fab-ui'
 import { AvatarImage, AvatarFallback } from 'reka-ui'
 </script>
 
@@ -730,7 +732,7 @@ Bannière d'alerte avec icône, titre, fermeture et disparition automatique. Se 
 
 ```vue
 <script setup lang="ts">
-import { Alert } from '@/components/ui/alert'
+import { Alert } from 'fab-ui'
 </script>
 
 <template>
@@ -847,7 +849,7 @@ Barre de progression déterminée ou indéterminée (animation) avec label de po
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ProgressBar } from '@/components/ui/progress'
+import { ProgressBar } from 'fab-ui'
 
 const progress = ref(65)
 </script>
@@ -903,8 +905,8 @@ Conteneur de contenu avec bordure, ombre et slots structurels. `CardHeader` est 
 
 ```vue
 <script setup lang="ts">
-import { Card, CardHeader } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Card, CardHeader } from 'fab-ui'
+import { Button } from 'fab-ui'
 </script>
 
 <template>
@@ -968,7 +970,7 @@ Bloc de code avec coloration syntaxique (highlight.js, thème Atom One Dark), bo
 
 ```vue
 <script setup lang="ts">
-import { Code } from '@/components/ui/code'
+import { Code } from 'fab-ui'
 
 const snippet = `const greet = (name: string) => \`Hello, \${name}!\``
 </script>
@@ -1015,7 +1017,7 @@ Composant image avec skeleton de chargement, fallback en cas d'erreur, ratio d'a
 
 ```vue
 <script setup lang="ts">
-import { Image } from '@/components/ui/image'
+import { Image } from 'fab-ui'
 </script>
 
 <template>
@@ -1071,7 +1073,7 @@ Carrousel tactile avec navigation, indicateurs et lecture automatique.
 
 ```vue
 <script setup lang="ts">
-import { Carousel, CarouselSlide } from '@/components/ui/carousel'
+import { Carousel, CarouselSlide } from 'fab-ui'
 
 const slides = [
   { title: 'Slide 1', img: '/img/1.jpg' },
@@ -1132,7 +1134,7 @@ Curseur de sélection de valeur numérique, basé sur `SliderRoot` de Reka UI. S
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Slider } from '@/components/ui/slider'
+import { Slider } from 'fab-ui'
 
 const volume = ref([50])
 const priceRange = ref([20, 80])
@@ -1209,7 +1211,7 @@ import {
   ContextMenuSubTrigger,
   ContextMenuSubContent,
   ContextMenuCheckboxItem,
-} from '@/components/ui/context-menu'
+} from 'fab-ui'
 import { ref } from 'vue'
 
 const showPreview = ref(true)
@@ -1280,8 +1282,8 @@ Hérite de `CollapsibleContentProps` de Reka UI.
 ```vue
 <script setup lang="ts">
 import { CollapsibleRoot, CollapsibleTrigger } from 'reka-ui'
-import { CollapsibleContent } from '@/components/ui/collapsible'
-import { Button } from '@/components/ui/button'
+import { CollapsibleContent } from 'fab-ui'
+import { Button } from 'fab-ui'
 </script>
 
 <template>
@@ -1344,7 +1346,7 @@ interface SpeedDialItem {
 
 ```vue
 <script setup lang="ts">
-import { SpeedDial, type SpeedDialItem } from '@/components/ui/speed-dial'
+import { SpeedDial, type SpeedDialItem } from 'fab-ui'
 import { EditIcon, TrashIcon, ShareIcon, DownloadIcon } from 'lucide-vue-next'
 
 const actions: SpeedDialItem[] = [
@@ -1428,9 +1430,9 @@ interface DataTableColumn<Row = Record<string, unknown>> {
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { DataTable, type DataTableColumn } from '@/components/ui/data-table'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { DataTable, type DataTableColumn } from 'fab-ui'
+import { Badge } from 'fab-ui'
+import { Button } from 'fab-ui'
 
 interface User {
   id:     number
