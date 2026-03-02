@@ -107,18 +107,17 @@ In your main CSS file (e.g. `src/assets/app.css`), import Tailwind and the libra
 
 
 @source '../../node_modules/@buillaume.biondo/fab-ui/dist/';
-/* Optional: Marianne font (French government design system) */
-/* @import '@buillaume.biondo/fab-ui/style/marianne'; */
+/* Optional: override display font (Plus Jakarta Sans loaded separately) */
+/* @import '@buillaume.biondo/fab-ui/style/display'; */
 ```
 
 ### Fonts
 
-Two fonts are loaded automatically via Google Fonts when you import the library stylesheet:
+Three fonts are loaded automatically via Google Fonts when you import the library stylesheet:
 
-- **DM Sans** — body text and UI
-- **JetBrains Mono** — code blocks and monospaced metrics
-
-An optional **Marianne** font (used by the French government design system) is available as local `woff`/`woff2` files in `node_modules/@buillaume.biondo/fab-ui/fonts/marianne/`. Uncomment the import above to activate it.
+- **Plus Jakarta Sans** — headings and display text (SIL OFL 1.1)
+- **DM Sans** — body text and UI (SIL OFL 1.1)
+- **JetBrains Mono** — code blocks and monospaced metrics (SIL OFL 1.1)
 
 ### Toaster
 

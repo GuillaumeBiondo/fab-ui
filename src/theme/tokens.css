@@ -5,7 +5,7 @@
    ──────────────────────────────────────────────────────────────────────────── */
 @theme inline {
     /* Familles de polices */
-    --font-display:    'Marianne', system-ui, sans-serif;
+    --font-display:    'Plus Jakarta Sans', system-ui, sans-serif;
     --font-sans:       'DM Sans', system-ui, sans-serif;
     --font-mono:       'JetBrains Mono', ui-monospace, monospace;
 
@@ -301,7 +301,7 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-        font-family: 'Marianne', system-ui, sans-serif;
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     }
 
     code, pre, kbd, samp {
