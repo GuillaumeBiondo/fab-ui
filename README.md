@@ -105,6 +105,8 @@ In your main CSS file (e.g. `src/assets/app.css`), import Tailwind and the libra
 @import 'tailwindcss';
 @import '@buillaume.biondo/fab-ui/style';
 
+
+@source '../../node_modules/@buillaume.biondo/fab-ui/dist/';
 /* Optional: Marianne font (French government design system) */
 /* @import '@buillaume.biondo/fab-ui/style/marianne'; */
 ```
