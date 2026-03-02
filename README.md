@@ -107,8 +107,6 @@ In your main CSS file (e.g. `src/assets/app.css`), import Tailwind and the libra
 
 
 @source '../../node_modules/@buillaume.biondo/fab-ui/dist/';
-/* Optional: override display font (Plus Jakarta Sans loaded separately) */
-/* @import '@buillaume.biondo/fab-ui/style/display'; */
 ```
 
 ### Fonts
