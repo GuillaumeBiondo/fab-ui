@@ -1,15 +1,23 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils';
 import type { VNode } from 'vue';
-import hljs from 'highlight.js';
-import { Check, Copy } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
+import { Check, Copy } from 'lucide-vue-next';
+import hljs from 'highlight.js/lib/core';
+import langJson     from 'highlight.js/lib/languages/json';
+import langYaml     from 'highlight.js/lib/languages/yaml';
+import langMarkdown from 'highlight.js/lib/languages/markdown';
+
+hljs.registerLanguage('json',     langJson);
+hljs.registerLanguage('yaml',     langYaml);
+hljs.registerLanguage('markdown', langMarkdown);
+hljs.registerLanguage('md',       langMarkdown);
 
 const props = withDefaults(
     defineProps<{
         /** Code à afficher — ou utiliser le slot par défaut */
         code?:        string;
-        /** Identifiant de langage highlight.js (json, yaml, javascript, php, bash…) */
+        /** Identifiant de langage highlight.js : json, yaml, markdown / md */
         language?:    string;
         /** Nom de fichier affiché dans l'en-tête */
         filename?:    string;
